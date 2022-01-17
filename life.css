@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1 {
+    margin: 5em 0 1em;
+}
+
+table {
+    border-spacing: 0;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid grey;
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: antiquewhite;
+    border: 0;
+}
+
+input[type='checkbox']:checked {
+    background-color: grey;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    margin: 0 0 2em;
+}
