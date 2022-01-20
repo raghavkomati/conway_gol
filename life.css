@@ -9,7 +9,8 @@ body {
 }
 
 h1 {
-    margin: 5em 0 1em;
+    margin: 1em 0 1em;
+    color: #555555;
 }
 
 table {
@@ -22,6 +23,35 @@ td {
     border: 1px solid grey;
 }
 
+@-webkit-keyframes greenC {
+    50% {
+        box-shadow: 0 0 0 99px green inset;
+    }
+}
+@keyframes greenC {
+    50% {
+        box-shadow: 0 0 0 99px green inset;
+    }
+}
+
+@-webkit-keyframes redC {
+    0% {
+        box-shadow: 0 0 0 99px grey inset;
+    }
+    25% {
+        box-shadow: 0 0 0 99px red inset;
+    }
+}
+
+@keyframes redC {
+    0% {
+        box-shadow: 0 0 0 99px grey inset;
+    }
+    25% {
+        box-shadow: 0 0 0 99px red inset;
+    }
+}
+
 input[type='checkbox'] {
     appearance: none;
     display: block;
@@ -29,16 +59,36 @@ input[type='checkbox'] {
     height: 20px;
     background-color: antiquewhite;
     border: 0;
+    -webkit-animation: redC 1s;
+    animation: redC 1s;
 }
 
 input[type='checkbox']:checked {
-    background-color: grey;
+    -webkit-animation: greenC 1s;
+    animation: greenC 1s;
+    box-shadow: 0 0 0 99px grey inset;
 }
 
-.btn {
-    border: none;
+.btn{
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     height: 40px;
     width: 40px;
+    color: whitesmoke;
+    background: linear-gradient(hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0)) #555;
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.7) inset, 0 .15em .1em -.1em rgba(0, 0, 0, 0.3);
     margin: 0 0 2em;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.btn:enabled:active {
+    background-image: none;
+    box-shadow: 0 .1em .3em rgba(0, 0, 0, .5) inset;
+}
+
+.btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
 }

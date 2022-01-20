@@ -93,7 +93,7 @@ console.log(game + '');
                     var checkBox = document.createElement('input');
                     checkBox.type = 'checkbox';
                     this.checkBoxes[y][x] = checkBox;
-
+                    checkBox.coords = [y, x];
                     cell.appendChild(checkBox);
                     row.appendChild(cell)
                 }
@@ -105,6 +105,46 @@ console.log(game + '');
                     this.gameStatus = "pause";
                     document.getElementById('play-btn').classList.add("fa-play");
                     document.getElementById('play-btn').classList.remove("fa-pause");            
+                }
+            });
+
+            this.grid.addEventListener('keyup', (evt) => {
+                var cb = evt.target;
+                if (checkBox.nodeName.toLowerCase() === 'input') {
+                    var y = cb.coords[0];
+                    var x = cb.coords[1];
+                    // console.log(evt.keyCode);
+                    switch(evt.keyCode) {
+                        case 37:
+                            if (x > 0) {
+                                this.checkBoxes[y][x-1].focus();
+                            } else {
+                                this.checkBoxes[y][this.size - 1].focus();
+                            }
+                            break;
+                        case 38:
+                            if (y > 0) {
+                                this.checkBoxes[y-1][x].focus();
+                            } else {
+                                this.checkBoxes[this.size - 1][x].focus();
+                            }
+                            break;
+                        case 39:
+                            if (x < (this.size - 1)) {
+                                this.checkBoxes[y][x+1].focus();
+                            } else {
+                                this.checkBoxes[y][0].focus();
+                            }
+                            break;
+                        case 40:
+                            if (y < (this.size - 1)) {
+                                this.checkBoxes[y+1][x].focus();
+                            } else {
+                                this.checkBoxes[0][x].focus();
+                            }
+                            break;
+                        default:
+                    }
                 }
             });
             this.grid.appendChild(fragment);
@@ -128,7 +168,7 @@ console.log(game + '');
                         } else if (this.gameStatus === 'pause') {
                             return;
                         } else if (this.gameStatus === 'off') {
-                            clearInterval(gameTimeout);
+                            clearInterval(this.gameTimeout);
                         }
                     }, 1500);    
                 }
